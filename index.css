@@ -1,0 +1,54 @@
+body{
+    padding: 0%;
+    margin: 0%;
+}
+.header{
+    background-color: #333;
+    padding: 0.5em 0.5em 0.5em;
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+/* Apply styles to the list container */
+ul {
+    list-style: none; /* remove bullet points */
+    margin: 0; /* remove margins */
+    padding: 0; /* remove padding */
+  }
+  
+  /* Apply styles to each list item */
+  li {
+    margin: 0 0 10px 0; /* add some bottom margin */
+    padding: 10px; /* add some padding */
+    border-radius: 5px; /* add some rounded corners */
+    background-color: #f2f2f2; /* add a light gray background color */
+  }
+  
+  /* Add hover effect to list items */
+  li:hover {
+    background-color: #e6e6e6; /* change background color on hover */
+    cursor: pointer; /* change cursor to pointer */
+  }
+  /* Apply styles to the list container */
+ul {
+    display: flex;
+    flex-wrap: wrap; /* allows items to wrap */
+    justify-content: space-between; /* align the items across the main axis */
+    align-items: center; /* center the items along the cross axis */
+}
+
+/* Apply styles to each list item */
+li {
+    flex-basis: 20%; /* width of each item */
+    padding: 10px; /* add some padding */
+    border-radius: 5px; /* add some rounded corners */
+    background-color: #f2f2f2; /* add a light gray background color */
+    text-align: center; /* center the text */
+    margin: 10px; /* some margin between items */
+}
+.footer {
+    background-color: #333;
+    padding: 0.5em 0.5em 0.5em;
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
