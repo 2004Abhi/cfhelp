@@ -49,4 +49,4 @@ fetch('https://kontests.net/api/v1/codeforces')
   .catch(error => console.log('Error:', error));
   let year = new Date().getFullYear();
   let yearElement = document.querySelector(".year");
-  yearElement.textContent="Copyright @"+year;
+  yearElement.textContent="Copyright @"+year; 
