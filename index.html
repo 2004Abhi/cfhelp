@@ -8,26 +8,18 @@
     <link href="/index.css" rel="stylesheet">
 </head>
 <body>
-    <div class="header">HEADER</div>
-    <div class="body">
-        <div>
-            <h2>HERE ARE SOME DETAILS ABOUT UPCOMING CONTESTS</h2>
+    <div class="header">
+        <h3>Header</h3>
+        <select  id="user-select" onchange="userSelect()">
+            <option value="" disabled selected>Please select an option</option>
+            <!-- contents will be added  after f etched from api-->
+        </select>
+    </div>
+    <div class="main-content">
+        <div class="info">
+            <h3 id="info">No Information Available</h3>
         </div>
         <div class="contest-container">
-            <div class="heading">
-                <div class="contest-name">
-                    <h3>Name</h3>
-                </div>
-                <div class="contest-Date">
-                    <h3>Date</h3>
-                </div>
-                <div class="contest-starttime">
-                    <h3>Start Time</h3>
-                </div>
-                <div class="contest-endtime">
-                    <h3>End Time</h3>
-                </div>
-            </div>
             <!-- data is added here after fetched from the api -->
         </div>
     </div>

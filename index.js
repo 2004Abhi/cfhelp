@@ -1,9 +1,50 @@
-fetch('https://kontests.net/api/v1/codeforces')
+
+fetch('https:kontests.net/api/v1/sites')
+.then(response=>response.json())
+.then(data=>{
+  console.log(data);
+  const contests=data;
+  const container=document.getElementById('user-select');
+  contests.forEach(contest=>{
+    const contestName=document.createElement('option');
+    contestName.value=contest[1];
+    contestName.innerHTML=contest[0];
+    container.appendChild(contestName);
+  })
+}).catch(error=>{console.log(error);})
+ function userSelect() {
+  var select = document.getElementById("user-select");
+  var selectedOption = select.options[select.selectedIndex];
+  var currentValue = selectedOption.value;
+  var currentContext=selectedOption.innerHTML;
+  console.log("The current value of the selected option is: " + currentContext);
+  // do something with the selected option
+  fetch(`https://kontests.net/api/v1/${currentValue}`)
   .then(response => response.json())
   .then(data => {
+    console.log(data);
     const contests=data;
+    if(contests.length > 0) {
+    const info=document.getElementById('info');
+    info.textContent=`Here Are Some Details About Upcoming ${currentContext} Contests`
     const container = document.querySelector('.contest-container');
-
+    container.innerHTML="";
+    container.innerHTML+=
+    `<div class="heading">
+    <div class="contest-name">
+        <h3>Name</h3>
+    </div>
+    <div class="contest-Date">
+        <h3>Date</h3>
+    </div>
+    <div class="contest-starttime">
+        <h3>Start Time</h3>
+    </div>
+    <div class="contest-endtime">
+        <h3>End Time</h3>
+    </div>
+</div>
+    `
     contests.forEach(contest => {
         const contestDiv = document.createElement('ul');
         contestDiv.className = 'contest';
@@ -14,7 +55,7 @@ fetch('https://kontests.net/api/v1/codeforces')
         contestDiv.appendChild(contestName);
 
         const start_time=contest.start_time;
-        let char='T'
+        let char=(currentValue==='code_chef')?' ':'T'
         let index = start_time.indexOf(char);
         let substring = start_time.substring(0, index);
         let dateArr = substring.split("-");
@@ -24,8 +65,8 @@ fetch('https://kontests.net/api/v1/codeforces')
         contestDiv.appendChild(startDate);
 
         const startTime = document.createElement('li');
-        let startChar = "T";
-        let endChar = "Z";
+        let startChar =(currentValue==='code_chef')?' ':'T';
+        let endChar = (currentValue==='code_chef')?'U':'Z'
         let startIndex = start_time.indexOf(startChar) + 1;
         let endIndex = start_time.indexOf(endChar);
         let slice = start_time.slice(startIndex, endIndex);
@@ -44,9 +85,24 @@ fetch('https://kontests.net/api/v1/codeforces')
 
         container.appendChild(contestDiv);
     });
-    // Do something with the data
+  }else{
+    const info=document.getElementById('info');
+    info.textContent=`No Information Available`
+    const container = document.querySelector('.contest-container');
+    container.innerHTML="";
+  }
   })
-  .catch(error => console.log('Error:', error));
+  .catch(error => {
+    const info=document.getElementById('info');
+    info.textContent=`No Information Available`
+    const container = document.querySelector('.contest-container');
+    container.innerHTML="";
+    console.log('Error:', error)});
+}
+
+  //update date
   let year = new Date().getFullYear();
   let yearElement = document.querySelector(".year");
   yearElement.textContent="Copyright @"+year; 
+
+  
