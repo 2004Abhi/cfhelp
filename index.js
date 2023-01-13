@@ -9,15 +9,37 @@ fetch('https://kontests.net/api/v1/codeforces')
         contestDiv.className = 'contest';
 
         const contestName = document.createElement('li');
-        contestName.textContent = contest.name;
+        const contesturl=contest.url;
+        contestName.innerHTML =`<a href=${contesturl}>` + contest.name+ `</a>` ;
         contestDiv.appendChild(contestName);
 
+        const start_time=contest.start_time;
+        let char='T'
+        let index = start_time.indexOf(char);
+        let substring = start_time.substring(0, index);
+        let dateArr = substring.split("-");
+
+        const startDate = document.createElement('li');
+        startDate.textContent = `${dateArr[2]}-${dateArr[1]}-${dateArr[0]}`;
+        contestDiv.appendChild(startDate);
+
         const startTime = document.createElement('li');
-        startTime.textContent = `Start Time: ${contest.start_time}`;
+        let startChar = "T";
+        let endChar = "Z";
+        let startIndex = start_time.indexOf(startChar) + 1;
+        let endIndex = start_time.indexOf(endChar);
+        let slice = start_time.slice(startIndex, endIndex);
+        let startTimeArr=slice.split(':');
+        startTime.textContent = `${startTimeArr[0]>"12"?startTimeArr[0]-"12":startTimeArr[0]}:${startTimeArr[1]} ${startTimeArr[0]>="12"?"PM":"AM"}`;
         contestDiv.appendChild(startTime);
 
         const endTime = document.createElement('li');
-        endTime.textContent = `End Time: ${contest.end_time}`;
+        const end_time=contest.end_time;
+        startIndex = end_time.indexOf(startChar) + 1;
+        endIndex = end_time.indexOf(endChar);
+        slice = end_time.slice(startIndex, endIndex);
+        let endTimeArr=slice.split(':');
+        endTime.textContent = `${endTimeArr[0]>"12"?endTimeArr[0]-"12":endTimeArr[0]}:${endTimeArr[1]} ${endTimeArr[0]>="12"?"PM":"AM"}`;
         contestDiv.appendChild(endTime);
 
         container.appendChild(contestDiv);

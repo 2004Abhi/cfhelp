@@ -9,6 +9,15 @@ body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
 }
+.heading{
+  margin: 0; /* remove margins */
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #333;
+  color: #fff;
+}
 /* Apply styles to the list container */
 ul {
     list-style: none; /* remove bullet points */
