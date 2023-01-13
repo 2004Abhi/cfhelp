@@ -1,5 +1,5 @@
 
-fetch('https:kontests.net/api/v1/sites')
+fetch('https://kontests.net/api/v1/sites')
 .then(response=>response.json())
 .then(data=>{
   console.log(data);
